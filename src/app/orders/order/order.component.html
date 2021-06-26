@@ -1,0 +1,14 @@
+<h1>{{product.name}}</h1>
+
+<mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Quantity</mat-label>
+    <input matInput type="number" name="quantity" #quantity class="example-right-align" >
+    <!-- <span matPrefix>$&nbsp;</span> -->
+    <!-- <span matSuffix>.00</span> -->
+  </mat-form-field>
+  
+  <div class="card-footer text-center">
+    <a class="btn btn-primary m-1" (click)="purchase(quantity.value)">Order</a>
+</div>
+
+

@@ -1,0 +1,46 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { OrderCreateViewModel } from './models/order-create-view-model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class OrdersService {
+
+  
+  endPoint = 'http://localhost:60108/order';
+
+  constructor(private httpClient: HttpClient) { }
+
+  httpHeader = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token") as string
+    })
+  }  
+
+  AddOrder(order:OrderCreateViewModel): Observable<boolean> {
+    debugger;
+    return this.httpClient.post<boolean>(this.endPoint + '/add',order,this.httpHeader)
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
+    )
+  }
+ 
+
+  httpError(error:any) {
+    let msg = '';
+    if(error.error instanceof ErrorEvent) {
+      // client side error
+      msg = error.error.message;
+    } else {
+      // server side error
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+  //  console.log(msg);
+    return throwError(msg);
+  }
+}
