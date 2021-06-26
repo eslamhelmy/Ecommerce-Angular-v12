@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     
   }
   login(email:string, password:string){
+    
     console.log(email, password);
     this._userService.login({email:email, password:password}).subscribe(res=>{
       if(res.data){

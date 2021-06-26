@@ -1,37 +1,26 @@
-<!-- <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let product of products">         
-        <mat-card class="">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>{{product.name}}</mat-card-title>
-              <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
-            </mat-card-header>
-             <img width="100px" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> 
-            <mat-card-content>
-              <p>
-                  {{product.description}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button class="btn btn-primary" mat-button>Order</button>
-            </mat-card-actions>
-        </mat-card>  
-         
-    </mat-grid-tile>
-  </mat-grid-list>
-   -->
 
-   <div class="card-deck row" style="display: flex;justify-content: flex-start;align-items: flex-start; margin: 2px;">
+
+<div class="container-fluid my-container" style="padding: 0;">
     
-        <div class="card col-4" style="padding: 0;" *ngFor="let prod of products">
-            <div class="card-header">
+   <div class=" row justify-content-md-center">
+    
+        <div class=" col-4" style="padding: 1em" *ngFor="let prod of products">
+            <div class="card-header card-bg" >
                 <h3>{{prod.name}}</h3>
             </div>
-            
-            <div class="card-footer text-center">
-                <a class="btn btn-primary m-1" (click)="order(prod)">Order</a>
+            <img class="card-img-top " src="{{prod.image}}" alt="Card image cap" style="height: 14em;">
+            <div class="card-footer text-center card-bg">
+                <h4>{{prod.price}} $</h4>
+                <a class="btn  m-1" (click)="order(prod)" style="    background: #a1890c; 
+                width: 7em;" *ngIf="isAuthorized">Order</a>
             </div>
            
         </div>
 
 </div>
+
+
+</div>
+
+
+

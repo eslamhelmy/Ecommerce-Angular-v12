@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthGuardService } from 'src/app/orders/auth-guard.service';
 import { Product } from '../models/product';
 import { ProductService } from '../product.service';
 
@@ -10,10 +11,12 @@ import { ProductService } from '../product.service';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
-
-  constructor( private _productService: ProductService, private _router: Router ) { }
+  isAuthorized:boolean=false;
+  constructor( private _productService: ProductService, private _router: Router,private _authService: AuthGuardService ) { }
 
   ngOnInit(): void {
+    
+   this.isAuthorized=this._authService.gettoken()
     this.loadProducts();
   }
 

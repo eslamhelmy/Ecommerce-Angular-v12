@@ -5,8 +5,10 @@ import {MatCardModule} from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'
+import { MyOrdersComponent } from '../orders/my-orders/my-orders.component';
 const routes: Routes = [
-   { path: '', component: ProductsComponent }
+   { path: '', component: ProductsComponent },
+   { path: 'myOrders', component: MyOrdersComponent }
 ];
 
 

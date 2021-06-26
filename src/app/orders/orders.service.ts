@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { OrderCreateViewModel } from './models/order-create-view-model';
+import { Product } from '../products/models/product';
+import { OrderCreateViewModel, OrderViewModel } from './models/order-create-view-model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,13 @@ export class OrdersService {
     )
   }
  
+  getMyOrders(): Observable<OrderViewModel[]> {
+    return this.httpClient.get<OrderViewModel[]>(this.endPoint + '/GetOrders',this.httpHeader)
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
+    )
+  }
 
   httpError(error:any) {
     let msg = '';

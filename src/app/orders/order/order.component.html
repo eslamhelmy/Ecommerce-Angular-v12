@@ -1,14 +1,85 @@
-<h1>{{product.name}}</h1>
 
-<mat-form-field appearance="fill" floatLabel="always">
-    <mat-label>Quantity</mat-label>
-    <input matInput type="number" name="quantity" #quantity class="example-right-align" >
-    <!-- <span matPrefix>$&nbsp;</span> -->
-    <!-- <span matSuffix>.00</span> -->
-  </mat-form-field>
-  
-  <div class="card-footer text-center">
-    <a class="btn btn-primary m-1" (click)="purchase(quantity.value)">Order</a>
+
+<div class="container" style="margin-top: 5em;">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="ibox">
+              
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table">
+                            <tbody>
+                            <tr>
+                                <td width="90">
+                                   
+                                      <img class="card-img-top img" src="{{product.image}}" alt="Card image cap" id="prod-img">
+                                  
+                                </td>
+                                <td class="desc">
+                                    <h3>
+                                    <a href="#" class="text-navy">
+                                      {{product.name}}
+                                    </a>
+                                    </h3>
+                                    <p class="small">
+                                      {{product.description}}
+                                    </p>
+                                    <dl class="small m-b-none">
+                                        <dt>Description lists</dt>
+                                        <dd>A description list is perfect for defining terms.</dd>
+                                    </dl>
+
+                                </td>
+
+                                <td>
+                                 {{product.price}}
+                                  <br>
+                                    <s class="small text-muted">{{product.discountPercentage}}</s>
+                                </td>
+                                <td width="65">
+                                  <input matInput type="number" min="1" name="quantity" #quantity class="example-right-align" (change)="CalcTotalPrice(quantity.value,product.newPrice)" >  </td>
+                                <td>
+                                    <h4>
+                                       {{product.newPrice}}
+                                    </h4>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+           
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Cart Summary</h5>
+                </div>
+                <div class="ibox-content">
+                    <span>
+                        Total
+                    </span>
+                    <h2 class="font-bold">
+                       {{totalPrice}}
+                    </h2>
+
+                    <hr>
+                  
+                    <div class="m-t-sm">
+                        <div class="btn-group">
+                        <a href="#" class="btn  btn-md" style="background: rgb(180, 142, 15);    margin-right: 20px;" (click)="purchase(quantity.value)"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                        <a href="#" class="btn btn-white btn-md" style="background: rgb(204, 201, 191);" > Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
-
-
+</div>
+     

@@ -11,8 +11,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  product:Product = {id:0,price:0,description:'',name:'',image:''};
+  product:Product = {id:0,price:0,description:'',name:'',image:'',newPrice:0,discountPercentage:0};
   orderSaved: boolean = false;
+  totalPrice:number=0;
   constructor(private _route: ActivatedRoute, private _productService: ProductService, private _orderService: OrdersService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -20,11 +21,13 @@ export class OrderComponent implements OnInit {
    if(productId)
       this._productService.getProductById(+productId).subscribe(res=>{
         this.product = res;
+        this.totalPrice= this.product.price;
         console.log(this.product);
       })
   }
 
   purchase(quantity:string){    
+    alert(quantity)
     this._orderService.AddOrder({productId:this.product.id, quantity: +quantity}).subscribe(x=> {
       if(x)
         this.openSnackBar('Order has been Created Successfully',':)');
@@ -33,8 +36,13 @@ export class OrderComponent implements OnInit {
     })
   }
 
-  openSnackBar(message: string, action: string) {
+  openSnackBar(message: any, action: string) {
     this._snackBar.open(message, action);
+  }
+
+  CalcTotalPrice(quantity:any,newPrice:any)
+  {
+    this.totalPrice=quantity*newPrice;
   }
 
 }

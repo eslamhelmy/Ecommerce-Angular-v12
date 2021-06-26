@@ -1,10 +1,17 @@
-<mat-toolbar>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: #bba732 !important;height: 4rem;;">
+    <a class="navbar-brand" href="#">SOUQ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
+    <div class="collapse navbar-collapse" id="navbarNav">
+     
+
+    </div>
+    <form class="form-inline my-2 my-lg-0">
+     
+      <a href="/myOrders" *ngIf="isAuthorized"><mat-icon class="cart-icon">shopping_cart</mat-icon></a>
+      <button type="button"  *ngIf="!isAuthorized" class="btn btn-dark my-2 my-sm-0" id="logbtn" (click)="login()" >Login</button>
+    </form>
+  </nav>
+

@@ -8,6 +8,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthenticationGuard } from './authentication.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddTokenInterceptor } from './add-token.interceptor';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 
 const routes: Routes = [
@@ -16,13 +17,15 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    OrderComponent
+    OrderComponent,
+    MyOrdersComponent
   ],
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
+
     RouterModule.forChild(routes)
   ],
   providers: [

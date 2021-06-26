@@ -10,3 +10,16 @@
   mat-grid-tile {
     background: lightblue;
   }
+
+  .my-container
+  {
+    text-align: center;
+    /* display: inline-block; */
+    margin-top: 4em;
+    width: 80%;
+  }
+  .card-bg
+  {
+    background:#eae8dd;
+    
+  }
