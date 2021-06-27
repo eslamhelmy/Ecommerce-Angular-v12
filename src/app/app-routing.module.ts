@@ -8,18 +8,24 @@ const routes: Routes = [
     loadChildren: () => import('./products/product.module')
       .then(mod => mod.ProductModule)
   },
+  
   {
-    path: 'order/:id',
+    path: 'user',
+    loadChildren: () => import('./users/users.module')
+      .then(mod => mod.UsersModule)
+  },
+  
+  {
+    path: 'orders',
     loadChildren: () => import('./orders/order.module')
       .then(mod => mod.OrderModule)
   },
 
   {
-    path: 'user',
-    loadChildren: () => import('./users/users.module')
-      .then(mod => mod.UsersModule)
+    path: '',
+    loadChildren: () => import('./products/product.module')
+      .then(mod => mod.ProductModule)
   }
-
 
 
 ];

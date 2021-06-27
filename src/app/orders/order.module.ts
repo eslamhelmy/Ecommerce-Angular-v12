@@ -12,7 +12,8 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 
 const routes: Routes = [
-  { path: '', component: OrderComponent, canActivate:[AuthenticationGuard] }
+  { path: 'order/:id', component: OrderComponent, canActivate:[AuthenticationGuard] },
+  { path: 'myorders', component: MyOrdersComponent}
 ];
 
 @NgModule({

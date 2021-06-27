@@ -4,19 +4,18 @@
             <div class="title">
                 <div class="row">
                     <div class="col">
-                        <h4><b>Shopping Cart</b></h4>
+                        <h4><b>My Orders</b></h4>
                     </div>
-                    <div class="col align-self-center text-right text-muted">{{count}}</div>
                 </div>
             </div>
             <div class="row border-top border-bottom" *ngFor="let order of orders">
                 <div class="row main align-items-center">
-                    <div class="col-4"><img class="img-fluid" src="{{order.image}}" style="width: 12em;height:8em"></div>
+                    <div class="col-4"><img class="img-fluid" src="http://localhost:60108/{{order.image}}" style="width: 12em;height:8em"></div>
                     <div class="col">
                         <div class="row text-muted">{{order.productName}}</div>
                         
                     </div>
-                    <div class="col"> <a  class="border">{{order.quantity}}</a> </div>
+                    <div class="col"> <a  class="border">{{order.price}} $</a> </div>
                     <!-- <div class="col">{{order.propductPrice}} $</div> -->
                 </div>
             </div>

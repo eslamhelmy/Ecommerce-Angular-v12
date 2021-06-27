@@ -7,8 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'
 import { MyOrdersComponent } from '../orders/my-orders/my-orders.component';
 const routes: Routes = [
-   { path: '', component: ProductsComponent },
-   { path: 'myOrders', component: MyOrdersComponent }
+   { path: '', component: ProductsComponent }
 ];
 
 

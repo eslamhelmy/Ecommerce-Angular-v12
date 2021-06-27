@@ -8,11 +8,11 @@
             <div class="card-header card-bg" >
                 <h3>{{prod.name}}</h3>
             </div>
-            <img class="card-img-top " src="{{prod.image}}" alt="Card image cap" style="height: 14em;">
+            <img class="card-img-top " src="http://localhost:60108/{{prod.image}}" alt="Card image cap" style="height: 14em;">
             <div class="card-footer text-center card-bg">
                 <h4>{{prod.price}} $</h4>
                 <a class="btn  m-1" (click)="order(prod)" style="    background: #a1890c; 
-                width: 7em;" *ngIf="isAuthorized">Order</a>
+                width: 7em;">Order</a>
             </div>
            
         </div>

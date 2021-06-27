@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
 
   order(product: Product){
     console.log('triggered');
-    this._router.navigate(['/order',product.id]);
+    this._router.navigate(['/orders/order',product.id]);
   }
 
 }

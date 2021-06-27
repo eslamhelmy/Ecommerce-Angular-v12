@@ -13,7 +13,7 @@
                             <tr>
                                 <td width="90">
                                    
-                                      <img class="card-img-top img" src="{{product.image}}" alt="Card image cap" id="prod-img">
+                                      <img class="card-img-top img" src="http://localhost:60108/{{product.image}}" alt="Card image cap" id="prod-img">
                                   
                                 </td>
                                 <td class="desc">
@@ -33,15 +33,17 @@
                                 </td>
 
                                 <td>
-                                 {{product.price}}
+                                 <!-- {{product.newPrice}} -->
                                   <br>
-                                    <s class="small text-muted">{{product.discountPercentage}}</s>
+                                    <s *ngIf="product.price != product.newPrice" class="small text-muted">{{product.price}}$</s>
                                 </td>
                                 <td width="65">
-                                  <input matInput type="number" min="1" name="quantity" #quantity class="example-right-align" (change)="CalcTotalPrice(quantity.value,product.newPrice)" >  </td>
+                                  
+                                  <input matInput type="number" min="1" name="quantity" placeholder="Quantity" #quantity class="example-right-align" (change)="CalcTotalPrice(quantity.value,product.newPrice)" >  </td>
                                 <td>
                                     <h4>
                                        {{product.newPrice}}
+                                       <span>$</span>
                                     </h4>
                                 </td>
                             </tr>
@@ -64,15 +66,15 @@
                         Total
                     </span>
                     <h2 class="font-bold">
-                       {{totalPrice}}
+                       {{totalPrice}}$
                     </h2>
 
                     <hr>
                   
                     <div class="m-t-sm">
                         <div class="btn-group">
-                        <a href="#" class="btn  btn-md" style="background: rgb(180, 142, 15);    margin-right: 20px;" (click)="purchase(quantity.value)"><i class="fa fa-shopping-cart"></i> Checkout</a>
-                        <a href="#" class="btn btn-white btn-md" style="background: rgb(204, 201, 191);" > Cancel</a>
+                        <a class="btn  btn-md" style="background: rgb(180, 142, 15);    margin-right: 20px;" (click)="purchase(quantity.value)"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                        <a  class="btn btn-white btn-md" style="background: rgb(204, 201, 191);" > Cancel</a>
                         </div>
                     </div>
                 </div>

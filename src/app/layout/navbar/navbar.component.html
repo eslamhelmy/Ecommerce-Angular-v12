@@ -10,7 +10,7 @@
     </div>
     <form class="form-inline my-2 my-lg-0">
      
-      <a href="/myOrders" *ngIf="isAuthorized"><mat-icon class="cart-icon">shopping_cart</mat-icon></a>
+      <a href="/orders/myorders" *ngIf="isAuthorized"><mat-icon class="cart-icon">shopping_cart</mat-icon></a>
       <button type="button"  *ngIf="!isAuthorized" class="btn btn-dark my-2 my-sm-0" id="logbtn" (click)="login()" >Login</button>
     </form>
   </nav>

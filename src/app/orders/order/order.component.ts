@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/products/models/product';
 import { ProductService } from 'src/app/products/product.service';
 import { OrdersService } from '../orders.service';
@@ -14,23 +14,25 @@ export class OrderComponent implements OnInit {
   product:Product = {id:0,price:0,description:'',name:'',image:'',newPrice:0,discountPercentage:0};
   orderSaved: boolean = false;
   totalPrice:number=0;
-  constructor(private _route: ActivatedRoute, private _productService: ProductService, private _orderService: OrdersService, private _snackBar: MatSnackBar) { }
+  constructor(private _route: ActivatedRoute, private _productService: ProductService,
+             private _orderService: OrdersService,private _router:Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
    let productId = this._route.snapshot.paramMap.get('id');
    if(productId)
       this._productService.getProductById(+productId).subscribe(res=>{
         this.product = res;
-        this.totalPrice= this.product.price;
+        this.totalPrice= this.product.newPrice;
         console.log(this.product);
       })
   }
 
   purchase(quantity:string){    
-    alert(quantity)
     this._orderService.AddOrder({productId:this.product.id, quantity: +quantity}).subscribe(x=> {
-      if(x)
+      if(x){  
         this.openSnackBar('Order has been Created Successfully',':)');
+        this._router.navigate(['orders/myorders']);
+      }
       else
         this.openSnackBar('Error Occured',':(');
     })
