@@ -39,7 +39,7 @@
                                 </td>
                                 <td width="65">
                                   
-                                  <input matInput type="number" min="1" name="quantity" placeholder="Quantity" #quantity class="example-right-align" (change)="CalcTotalPrice(quantity.value,product.newPrice)" >  </td>
+                                    <input matInput type="number" min="1" name="quantity"  placeholder="Quantity" [(ngModel)]="quantity" class="example-right-align" (change)="CalcTotalPrice(product.newPrice)" >  </td> 
                                 <td>
                                     <h4>
                                        {{product.newPrice}}
@@ -73,7 +73,7 @@
                   
                     <div class="m-t-sm">
                         <div class="btn-group">
-                        <a class="btn  btn-md" style="background: rgb(180, 142, 15);    margin-right: 20px;" (click)="purchase(quantity.value)"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                        <a class="btn  btn-md" style="background: rgb(180, 142, 15);    margin-right: 20px;" (click)="purchase()"><i class="fa fa-shopping-cart"></i> Checkout</a>
                         <a  class="btn btn-white btn-md" style="background: rgb(204, 201, 191);" > Cancel</a>
                         </div>
                     </div>

@@ -5,7 +5,9 @@ import {MatCardModule} from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'
-import { MyOrdersComponent } from '../orders/my-orders/my-orders.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { FormsModule } from '@angular/forms';
+
 const routes: Routes = [
    { path: '', component: ProductsComponent }
 ];
@@ -20,7 +22,9 @@ const routes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
-    RouterModule.forChild(routes)
+    FormsModule,
+    RouterModule.forChild(routes),
+    PaginationModule.forRoot()
   ]
 })
 export class ProductModule { }

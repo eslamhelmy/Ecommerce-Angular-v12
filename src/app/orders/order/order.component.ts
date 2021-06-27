@@ -14,6 +14,7 @@ export class OrderComponent implements OnInit {
   product:Product = {id:0,price:0,description:'',name:'',image:'',newPrice:0,discountPercentage:0};
   orderSaved: boolean = false;
   totalPrice:number=0;
+  quantity: number=1;
   constructor(private _route: ActivatedRoute, private _productService: ProductService,
              private _orderService: OrdersService,private _router:Router, private _snackBar: MatSnackBar) { }
 
@@ -27,8 +28,8 @@ export class OrderComponent implements OnInit {
       })
   }
 
-  purchase(quantity:string){    
-    this._orderService.AddOrder({productId:this.product.id, quantity: +quantity}).subscribe(x=> {
+  purchase(){    
+    this._orderService.AddOrder({productId:this.product.id, quantity: this.quantity}).subscribe(x=> {
       if(x){  
         this.openSnackBar('Order has been Created Successfully',':)');
         this._router.navigate(['orders/myorders']);
@@ -42,9 +43,9 @@ export class OrderComponent implements OnInit {
     this._snackBar.open(message, action);
   }
 
-  CalcTotalPrice(quantity:any,newPrice:any)
+  CalcTotalPrice(newPrice:any)
   {
-    this.totalPrice=quantity*newPrice;
+    this.totalPrice=this.quantity*newPrice;
   }
 
 }

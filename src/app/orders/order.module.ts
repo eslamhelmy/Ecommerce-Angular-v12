@@ -9,6 +9,7 @@ import { AuthenticationGuard } from './authentication.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddTokenInterceptor } from './add-token.interceptor';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
+    FormsModule,
     MatSnackBarModule,
 
     RouterModule.forChild(routes)
